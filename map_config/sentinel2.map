@@ -1,0 +1,123 @@
+MAP
+ NAME "uk"
+ IMAGECOLOR 255 255 255
+ STATUS ON
+ EXTENT 0.0 0.0 700000.0 1300000.0
+ SIZE 300 300
+ SHAPEPATH "/home/james/geodata/outlines"
+ UNITS METERS
+ PROJECTION
+  "init=epsg:27700"
+ END
+ 
+ WEB
+  METADATA
+   "wms_title" "Cloud-free (mostly!) Sentinel 2 images"
+   "wms_contactperson" "EDINA Helpdesk"
+   "wms_contactorganization" "EDINA"
+   "wms_contactvoicetelephone" "0131 650 3302"
+   "wms_contactfacsimiletelephone" "0131 650 3308"
+   "wms_contactelectronicmailaddress" "edina@ed.ac.uk"
+   "wms_srs" "EPSG:27700"
+   "ows_enable_request" "*"
+  END
+ END
+
+ LAYER
+  METADATA
+   "wms_title" "s2natcol"
+   "wms_srs" "EPSG:27700"
+   "wms_extent" "0.0 0.0 700000.0 1300000.0"
+  END 
+  NAME "s2natcol"
+  STATUS ON
+  TILEINDEX "s2_rgb.shp"
+  TILEITEM "location"
+  TYPE RASTER  
+  PROJECTION
+   "init=epsg:27700"
+  END
+  PROCESSING "BANDS=1,2,3"
+  # These are based on setting ranges for 1 100KM scene in QGIS
+  # and then applying to all other scenes. This particular range
+  # seems to give reasonable views although things are a bit dark
+  PROCESSING "SCALE_1=1,6623"
+  PROCESSING "SCALE_2=1,6674"
+  PROCESSING "SCALE_3=1,7285"   
+ END
+
+ LAYER
+  METADATA
+   "wms_title" "s2natcolB"
+   "wms_srs" "EPSG:27700"
+   "wms_extent" "0.0 0.0 700000.0 1300000.0"
+  END
+  NAME "s2natcolB"
+  STATUS ON
+  TILEINDEX "s2_rgb.shp"
+  TILEITEM "location"
+  TYPE RASTER
+  PROJECTION
+   "init=epsg:27700"
+  END
+  PROCESSING "BANDS=1,2,3"
+  # These are based on setting ranges for 1 100KM scene in QGIS
+  # and then applying to all other scenes. This particular range
+  # seems to give reasonable views although things are a bit dark
+  PROCESSING "SCALE_1=1,2000"
+  PROCESSING "SCALE_2=1,2000"
+  PROCESSING "SCALE_3=1,2000"
+ END
+
+ LAYER
+  METADATA
+   "wms_title" "s2natcolB_100m"
+   "wms_srs" "EPSG:27700"
+   "wms_extent" "0.0 0.0 700000.0 1300000.0"
+  END
+  NAME "s2natcolB_100m"
+  STATUS ON
+  TILEINDEX "nat_color_100m.shp"
+  TILEITEM "location"
+  TYPE RASTER
+  PROJECTION
+   "init=epsg:27700"
+  END
+  PROCESSING "BANDS=1,2,3"
+  # These are based on setting ranges for 1 100KM scene in QGIS
+  # and then applying to all other scenes. This particular range
+  # seems to give reasonable views although things are a bit dark
+  PROCESSING "SCALE_1=1,2000"
+  PROCESSING "SCALE_2=1,2000"
+  PROCESSING "SCALE_3=1,2000"
+ END
+ 
+ LAYER
+  METADATA
+   "wms_title" "s2nir"
+   "wms_srs" "EPSG:27700"
+   "wms_extent" "0.0 0.0 700000.0 1300000.0"
+  END
+  NAME "s2nir"
+  STATUS ON
+  TILEINDEX "s2_nir.shp"
+  TILEITEM "location"
+  TYPE RASTER
+  PROJECTION
+   "init=epsg:27700"
+  END
+  PROCESSING "BANDS=1,2,3"
+  PROCESSING "SCALE_1=32,4617"
+  PROCESSING "SCALE_2=75,1051"
+  PROCESSING "SCALE_3=163,951"
+ END
+  
+ OUTPUTFORMAT
+  NAME "png"
+  MIMETYPE "image/png"
+  DRIVER "AGG/PNG"
+  IMAGEMODE RGBA
+  EXTENSION "png"
+  FORMATOPTION "INTERLACE=OFF"
+ END
+END

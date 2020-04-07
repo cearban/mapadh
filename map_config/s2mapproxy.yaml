@@ -1,0 +1,69 @@
+services:
+  demo:
+  tms:
+    use_grid_names: true
+    origin: 'nw'
+  wms:
+    srs: ['EPSG:27700']
+    bbox_srs: ['EPSG:27700']
+    image_formats: ['image/png']
+    
+layers:
+  - name: s2natcol
+    title: s2natcol
+    sources: [sentinel2-natcol-cache]
+  - name: s2natcolB
+    title: s2natcolB
+    sources: [sentinel2-natcolB-cache]    
+  - name: s2natcolB_100m
+    title: s2natcolB_100m
+    sources: [sentinel2-natcolB_100m-cache]    
+  - name: s2nir
+    title: s2nir
+    sources: [sentinel2-nir-cache]
+    
+caches:
+  sentinel2-natcol-cache:
+    grids: [uk-grid]
+    sources: [sentinel2-natcol-source]
+  sentinel2-natcolB-cache:
+    grids: [uk-grid]
+    sources: [sentinel2-natcolB-source]    
+  sentinel2-natcolB_100m-cache:
+    grids: [uk-grid]
+    sources: [sentinel2-natcolB_100m-source]    
+  sentinel2-nir-cache:
+    grids: [uk-grid]
+    sources: [sentinel2-nir-source]    
+
+sources:
+  sentinel2-natcol-source:
+    type: wms
+    req:
+      url: http://localhost/cgi-bin/mapserv?map=/home/james/PycharmProjects/dmsentinel/mapfiles/sentinel2.map
+      layers: s2natcol
+  sentinel2-natcolB-source:
+    type: wms
+    req:
+      url: http://localhost/cgi-bin/mapserv?map=/home/james/PycharmProjects/dmsentinel/mapfiles/sentinel2.map
+      layers: s2natcolB      
+  sentinel2-natcolB_100m-source:
+    type: wms
+    req:
+      url: http://localhost/cgi-bin/mapserv?map=/home/james/PycharmProjects/dmsentinel/mapfiles/sentinel2.map
+      layers: s2natcolB_100m         
+  sentinel2-nir-source:
+    type: wms
+    req:
+      url: http://localhost/cgi-bin/mapserv?map=/home/james/PycharmProjects/dmsentinel/mapfiles/sentinel2.map
+      layers: s2nir      
+
+grids:
+ uk-grid:
+   srs: 'EPSG:27700'
+   bbox: [0, 0, 700000, 1300000]
+   bbox_srs: 'EPSG:27700'
+   res: [100, 50, 25, 10, 5, 2.5, 1, 0.5, 0.25, 0.125]
+   origin: 'sw'
+  
+globals:

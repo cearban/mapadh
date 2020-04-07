@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding="ISO-8859-1" ?>
+<ServiceExceptionReport version="1.2.0"
+xmlns="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ogc http://schemas.opengis.net/wcs/1.0.0/OGC-exception.xsd">
+  <ServiceException code="NoApplicableCode" locator="bbox">msWCSGetCoverage(): WCS server error. Requested BBOX (156005,732005,157995,733995) is outside requested coverage BBOX (299995,599995,400005,700005)
+  </ServiceException>
+</ServiceExceptionReport>
