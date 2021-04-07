@@ -300,8 +300,8 @@ def fetch_population_along_route(route_id):
             d[stop_id] = {
                 'station_name': s.station.name, #this works because of the relationship btwn CensusTripsRoute obj and RailwayStation obj
                 'oa_code': oa.oacode,
-                'oa_totpop01': oa.totpop01,
-                'oa_totpop11': oa.totpop
+                'oa_totpop01': int(oa.totpop01), #sqlalchemy return values as Decimal('92') etc and then jsonify in app.py complains...
+                'oa_totpop11': int(oa.totpop)
             }
             stop_id += 1
         except sqlalchemy.orm.exc.NoResultFound:
