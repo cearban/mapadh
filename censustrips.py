@@ -277,7 +277,8 @@ def list_stations(session):
 
 def fetch_population_along_route(route_id):
     d = {}
-    engine = create_engine('postgresql://james:MopMetal3@localhost:5432/mapadh')
+    pg_conn_str = None  # TODO need this - put password somewhere not here!
+    engine = create_engine(pg_conn_str)
     Session = sessionmaker(bind=engine)
     session = Session()
 
