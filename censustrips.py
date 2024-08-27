@@ -275,9 +275,8 @@ def list_stations(session):
         print(stn.name)
 
 
-def fetch_population_along_route(route_id):
+def fetch_population_along_route(route_id, pg_conn_str):
     d = {}
-    pg_conn_str = None  # TODO need this - put password somewhere not here!
     engine = create_engine(pg_conn_str)
     Session = sessionmaker(bind=engine)
     session = Session()
