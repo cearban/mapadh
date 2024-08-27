@@ -275,6 +275,8 @@ def list_stations(session):
         print(stn.name)
 
 
+# TODO: based on the names of the first and last station we can create a name for the route
+# TODO: rather than hardcoding which attribute is returned, make this user-defined
 def fetch_population_along_route(route_id, pg_conn_str):
     d = {}
     engine = create_engine(pg_conn_str)
