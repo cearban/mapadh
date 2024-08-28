@@ -278,7 +278,9 @@ def list_stations(session):
 # TODO: based on the names of the first and last station we can create a name for the route
 # TODO: rather than hardcoding which attribute is returned, make this user-defined
 def fetch_population_along_route(route_id, pg_conn_str):
-    d = {}
+    # set the first element of the dict that will be returned to the Route Name with a placeholder value that later
+    # we will populate
+    d = {'route_name': {'title': None}}
     engine = create_engine(pg_conn_str)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -286,6 +288,8 @@ def fetch_population_along_route(route_id, pg_conn_str):
     # fetch the stops for this route_id
     stops = session.query(CensusTripsRoute).filter_by(route_id=route_id)
     stop_id = 1
+
+    first_station_name, last_station_name = None, None
 
     # for each stop in the route
     for s in stops:
@@ -299,15 +303,23 @@ def fetch_population_along_route(route_id, pg_conn_str):
             oa = session.query(OutputArea).filter(
                 OutputArea.geom.ST_Contains(stn.geom)
             ).one()
-            d[stop_id] = {
+            d[str(stop_id)] = {
                 'station_name': s.station.name, #this works because of the relationship btwn CensusTripsRoute obj and RailwayStation obj
                 'oa_code': oa.oacode,
                 'oa_totpop01': int(oa.totpop01), #sqlalchemy return values as Decimal('92') etc and then jsonify in app.py complains...
                 'oa_totpop11': int(oa.totpop)
             }
+            if stop_id == 1:
+                first_station_name = s.station.name
+            else:
+                last_station_name = s.station.name
+
             stop_id += 1
         except sqlalchemy.orm.exc.NoResultFound:
             print("Warning! {} is not a station, skipped".format(s.station.name))
+
+    # set the name of the route - setting
+    d['route_name']['title'] = 'ScotRail rail journey from {0} to {1}'.format(first_station_name, last_station_name)
 
     return d
 
