@@ -7,12 +7,18 @@
 <body>
 <ol>
 {% for stop_id in route_stops.keys() %}
+  <!-- item with key 0 is the name of the route -->
+  {%  if stop_id == 'route_name' %}
+      <h3>{{route_stops[stop_id].title}}</h3>
+  <!-- all other items are stops on the route -->
+  {%  else %}
   <li>
       {{route_stops[stop_id].station_name}} :
       {{route_stops[stop_id].oa_code}} :
       {{route_stops[stop_id].oa_totpop01}} :
       {{route_stops[stop_id].oa_totpop11}} :
   </li>
+  {%  endif %}
 {% endfor %}
 </ol>
 <span>{{ station_name}}</span>
