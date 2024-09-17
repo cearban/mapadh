@@ -319,6 +319,7 @@ def fetch_population_along_route(route_id, pg_conn_str):
             print("Warning! {} is not a station, skipped".format(s.station.name))
 
     # set the name of the route - setting
+    # TODO: it will not always be ScotRail!
     d['route_name']['title'] = 'ScotRail rail journey from {0} to {1}'.format(first_station_name, last_station_name)
 
     return d
