@@ -9,18 +9,24 @@ PG_CONNECTION_STRING = config['Connections']['mapadh-db']
 
 
 @click.command()
-@click.option("--route_id", required=True, type=click.INT)
 @click.option("--station_geoids", required=True, type=click.STRING)
 @click.option("--dry_run", is_flag=True)
-def add_route(route_id, station_geoids, dry_run):
+def add_route(station_geoids, dry_run):
     """
-    python scripts/utils.py --route_id 2 --station_geoids "132,131,129,130,133,135,134,109,136,159,160,157,206"
+    python scripts/utils.py --station_geoids "132,131,129,130,133,135,134,109,136,159,160,157,206"
 
     :param route_id:
     :param station_geoids:
     :param dry_run:
     :return:
     """
+
+    db = Postgres(PG_CONNECTION_STRING)
+
+    # obtain the value that route_id is currently set to in the table and increment in the new added route
+    current_max_route_id = db.one("SELECT MAX(route_id) FROM geocrud.censustrips_route")
+    route_id = current_max_route_id + 1
+
     geoids = station_geoids.split(",")
     records = ""
     seq_id = 1
@@ -36,14 +42,8 @@ def add_route(route_id, station_geoids, dry_run):
     if dry_run:
         print(sql_cmd)
     else:
-        db = Postgres(PG_CONNECTION_STRING)
         db.run(sql_cmd)
 
 
 if __name__ == "__main__":
     add_route()
-
-
-
-
-
