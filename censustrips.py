@@ -276,7 +276,11 @@ def list_stations(session):
 
 
 # TODO: based on the names of the first and last station we can create a name for the route
+
 # TODO: rather than hardcoding which attribute is returned, make this user-defined
+
+# TODO: as per what was done in "lives on the line" noted in the pdf under docs, search for OAs
+#  within some distance e.g. 200m of each station and average the stat etc
 def fetch_population_along_route(route_id, pg_conn_str):
     # set the first element of the dict that will be returned to the Route Name with a placeholder value that later
     # we will populate
