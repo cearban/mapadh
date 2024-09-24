@@ -1,0 +1,51 @@
+- we now have this domain: cearbangeo.co.uk (for 1 yr @ £1.20)
+
+#TODO: since we now have this domain: cearbangeo.co.uk
+# can we use GitHub pages to quickly get some placeholder up there?
+#  https://pages.github.com/
+#   we now have: https://cearban.github.io/
+#    we need to use our custom cearbangeo.co.uk domain to point to https://cearban.github.io/ as a placeholder...
+
+---
+  
+# former webfaction folks
+https://www.opalstack.com/ 
+
+#TODO: for starters go for for cheap $12/mo opalstack thing for "experimentation" / "optimization" challenge...
+
+---
+
+#TODO: work on the API
+# i.e. what "functionality" do we want to provide?	
+
+#NOTE: we are using uv to manage this project (and its dependencies)
+
+#NOTE: we downloaded OS Open Roads as a Geopackage which has road links and nodes 
+# in theory we could use for drivetime analysis (or walktime analysis along roads)
+#  i.e. combine with stations to find buffer with distance defined as the walktime distance between current flat and Haymarket.
+
+#TODO: as per the original paper find OAs within 200m and if more than 1 do an average
+
+#TODO: work on the API
+# i.e. what "functionality" do we want to provide?
+
+#TODO: research / setup map provider(s)
+
+#TODO: revisit OpenLayers
+
+#TODO: look at maplibre / vector tile type stuff
+
+#TODO: consume the API from JS etc
+
+#TODO: load in 2021 data (from GeoLytix again)
+
+#TODO: research / setup map provider(s)
+
+#TODO: revisit OpenLayers
+
+#TODO: look at maplibre / vector tile type stuff
+
+#TODO: consume the API from JS etc
+
+#TODO: load in 2021 data (from GeoLytix again)
+ 
