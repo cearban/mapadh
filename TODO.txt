@@ -1,51 +1,73 @@
+{HOST}
+
 - we now have this domain: cearbangeo.co.uk (for 1 yr @ £1.20)
 
-#TODO: since we now have this domain: cearbangeo.co.uk
-# can we use GitHub pages to quickly get some placeholder up there?
+#TODO:can we use GitHub pages to quickly get some placeholder up there?
 #  https://pages.github.com/
 #   we now have: https://cearban.github.io/
 #    we need to use our custom cearbangeo.co.uk domain to point to https://cearban.github.io/ as a placeholder...
 
----
-  
-# former webfaction folks
-https://www.opalstack.com/ 
+- and we now have a $12/mo shared host with opalstack for maphacking purposes...
 
-#TODO: for starters go for for cheap $12/mo opalstack thing for "experimentation" / "optimization" challenge...
+#TODO: get some simple flask app running on the opalstack host
+# having "deployed" it via Git, having worked on it`s development here on pentlands...
+
+# we run Py apps on opalstack using wsgi?
+
+https://www.fullstackpython.com/wsgi-servers.html
 
 ---
+
+{API standing-up / consuming}
+
+for mapadh:
 
 #TODO: work on the API
-# i.e. what "functionality" do we want to provide?	
+# i.e. what "functionality" do we want to provide?
 
-#NOTE: we are using uv to manage this project (and its dependencies)
+#TODO: consume the API from JS etc
 
-#NOTE: we downloaded OS Open Roads as a Geopackage which has road links and nodes 
+#TODO: we downloaded OS Open Roads as a Geopackage which has road links and nodes
 # in theory we could use for drivetime analysis (or walktime analysis along roads)
 #  i.e. combine with stations to find buffer with distance defined as the walktime distance between current flat and Haymarket.
 
 #TODO: as per the original paper find OAs within 200m and if more than 1 do an average
 
-#TODO: work on the API
-# i.e. what "functionality" do we want to provide?
+---
 
-#TODO: research / setup map provider(s)
-
-#TODO: revisit OpenLayers
-
-#TODO: look at maplibre / vector tile type stuff
-
-#TODO: consume the API from JS etc
-
-#TODO: load in 2021 data (from GeoLytix again)
-
-#TODO: research / setup map provider(s)
+{APP}
 
 #TODO: revisit OpenLayers
 
 #TODO: look at maplibre / vector tile type stuff
 
-#TODO: consume the API from JS etc
+https://terradraw.water-gis.com/
+
+https://ng.hslayers.org/
+
+https://martinfleischmann.net/how-to-create-a-vector-based-web-map-hosted-on-github/
+
+---
+
+{DATA}
 
 #TODO: load in 2021 data (from GeoLytix again)
- 
+
+#TODO: research / setup map provider(s)
+
+# this provides service / api for free OSM mapping!
+# so follow their guide to provide OSM background mapping for a mapadh app
+# i.e. in MapLibre etc
+
+https://openfreemap.org/
+https://openfreemap.org/quick_start/
+
+See also:
+
+https://versatiles.org/
+
+#TODO: since this removes the ballache of rolling our own OSM solution / other providers, maybe bung them $5 / month donation
+# https://github.com/sponsors/hyperknot
+#  i.e. we pay $11.50 (opalstack hosting) + $5 donation for osm openfreemap mapping
+#   = $16.50 / mo
+#     = £12.39 / mo (~ same as 11.98/mo for amazon prime ad free) - different form of fun!
