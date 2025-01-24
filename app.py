@@ -8,7 +8,7 @@ import os
 from flask import Flask
 from flask import render_template
 from flask import jsonify
-from .censustrips import fetch_population_along_route
+from .censustrips import fetch_population_along_route, fetch_2021_population_along_route
 app = Flask(__name__)
 
 if not os.path.exists('CONFIG.ini'):
@@ -49,6 +49,18 @@ def censustrips_route_json(route_id):
     :return: dict as a json
     """
     route_stops_d = fetch_population_along_route(route_id, pg_conn_str=PG_CONNECTION_STRING)
+    return jsonify(route_stops_d)
+
+
+# TODO: test route to return 2021 data - we will want to use the existing route with a year param
+@app.route('/censustrips_route_2021_json/<int:route_id>')
+def censustrips_route_2021_json(route_id):
+    """
+    http://127.0.0.1:5000/censustrips_route_json/3 Edinburgh -> Kings Cross
+    :param route_id: 1
+    :return: dict as a json
+    """
+    route_stops_d = fetch_2021_population_along_route(route_id, pg_conn_str=PG_CONNECTION_STRING)
     return jsonify(route_stops_d)
 
 
