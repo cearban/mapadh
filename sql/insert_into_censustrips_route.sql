@@ -1,6 +1,6 @@
 -- SQL to create route 3 from Edinburgh -> Kings Cross
 -- station_id = gid of geocrud.railway_stations
-INSERT INTO geocrud.censustrips_route
+INSERT INTO censustrips.censustrips_route
 (route_id, seq_id, station_id)
 values
 (3, 1, 327),
