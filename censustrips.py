@@ -224,6 +224,193 @@ class OutputArea(Base):
     geom = Column(Geometry(geometry_type='MULTIPOLYGON', srid=27700))
 
 
+class OutputArea21(Base):
+    """
+    A representation of a 2021 census OutputArea
+    """
+    __tablename__ = 'gb_oa_2021'
+    __table_args__ = {'schema': 'censustrips'}
+    id = Column(Numeric, primary_key=True)
+    oa_code = Column(VARCHAR())
+    oa_code_11 = Column(VARCHAR())
+    change1121 = Column(VARCHAR())
+    lsoa_code = Column(VARCHAR())
+    totpop = Column(Numeric)
+    hhd = Column(Numeric)
+    pop_dens = Column(Numeric)
+    dwellings = Column(Numeric)
+    hhdpop = Column(Numeric)
+    commpop = Column(Numeric)
+    male = Column(Numeric)
+    female = Column(Numeric)
+    age_0_2 = Column(Numeric)
+    age_3_4 = Column(Numeric)
+    age_5_7 = Column(Numeric)
+    age_8_9 = Column(Numeric)
+    age_10_14 = Column(Numeric)
+    age_15 = Column(Numeric)
+    age_16_17 = Column(Numeric)
+    age_18_19 = Column(Numeric)
+    age_20_24 = Column(Numeric)
+    age_25_29 = Column(Numeric)
+    age_30_34 = Column(Numeric)
+    age_35_39 = Column(Numeric)
+    age_40_44 = Column(Numeric)
+    age_45_49 = Column(Numeric)
+    age_50_54 = Column(Numeric)
+    age_55_59 = Column(Numeric)
+    age_60_64 = Column(Numeric)
+    age_65 = Column(Numeric)
+    age_66_69 = Column(Numeric)
+    age_70_74 = Column(Numeric)
+    age_75_79 = Column(Numeric)
+    age_80_84 = Column(Numeric)
+    age_85_pl = Column(Numeric)
+    divorced = Column(Numeric)
+    msnotapply = Column(Numeric)
+    formciv = Column(Numeric)
+    civil_os = Column(Numeric)
+    civil_ss = Column(Numeric)
+    married_os = Column(Numeric)
+    married_ss = Column(Numeric)
+    single = Column(Numeric)
+    sep_civ = Column(Numeric)
+    sepmarried = Column(Numeric)
+    survciv = Column(Numeric)
+    widowed = Column(Numeric)
+    aabwbang = Column(Numeric)
+    aabwchin = Column(Numeric)
+    aabwindia = Column(Numeric)
+    aabwoth = Column(Numeric)
+    aabwpak = Column(Numeric)
+    bbwcaafr = Column(Numeric)
+    bbwcacar = Column(Numeric)
+    bbwcaoth = Column(Numeric)
+    mixedeth = Column(Numeric)
+    othereth = Column(Numeric)
+    whitetot = Column(Numeric)
+    whitebr = Column(Numeric)
+    cobafrica = Column(Numeric)
+    cobanocoth = Column(Numeric)
+    cobbriosea = Column(Numeric)
+    cobeuother = Column(Numeric)
+    cobeu14 = Column(Numeric)
+    cobeu2 = Column(Numeric)
+    cobeu8 = Column(Numeric)
+    cobnoneu = Column(Numeric)
+    cobuk = Column(Numeric)
+    cobmea = Column(Numeric)
+    cobamca = Column(Numeric)
+    rbuddhist = Column(Numeric)
+    rchrist = Column(Numeric)
+    rhindu = Column(Numeric)
+    rjewish = Column(Numeric)
+    rmuslim = Column(Numeric)
+    noreligion = Column(Numeric)
+    noanswer = Column(Numeric)
+    otherrel = Column(Numeric)
+    rsikh = Column(Numeric)
+    badhealth = Column(Numeric)
+    fairhealth = Column(Numeric)
+    ghealth = Column(Numeric)
+    vbadhealth = Column(Numeric)
+    vghealth = Column(Numeric)
+    eaemp = Column(Numeric)
+    eaeself = Column(Numeric)
+    eaunemp = Column(Numeric)
+    eafutist = Column(Numeric)
+    eiltsdis = Column(Numeric)
+    eihfam = Column(Numeric)
+    eioth = Column(Numeric)
+    eiret = Column(Numeric)
+    eistu = Column(Numeric)
+    agricult = Column(Numeric)
+    extractive = Column(Numeric)
+    manufact = Column(Numeric)
+    energysup = Column(Numeric)
+    ind_dna = Column(Numeric)
+    watersup = Column(Numeric)
+    construct = Column(Numeric)
+    retail = Column(Numeric)
+    transport = Column(Numeric)
+    accommfood = Column(Numeric)
+    infocomms = Column(Numeric)
+    finserv = Column(Numeric)
+    propserv = Column(Numeric)
+    proftech = Column(Numeric)
+    administ = Column(Numeric)
+    pubaddef = Column(Numeric)
+    education = Column(Numeric)
+    health = Column(Numeric)
+    otherind = Column(Numeric)
+    nssecdna = Column(Numeric)
+    l123hmapro = Column(Numeric)
+    l1011lstec = Column(Numeric)
+    l12semrou = Column(Numeric)
+    l13routine = Column(Numeric)
+    l14nwltune = Column(Numeric)
+    l15ftstu = Column(Numeric)
+    l456lmapro = Column(Numeric)
+    l7inter = Column(Numeric)
+    l89seoacc = Column(Numeric)
+    lq_appren = Column(Numeric)
+    lq_na = Column(Numeric)
+    lq_level1 = Column(Numeric)
+    lq_level2 = Column(Numeric)
+    lq_level3 = Column(Numeric)
+    lq_level4 = Column(Numeric)
+    lq_no = Column(Numeric)
+    lq_other = Column(Numeric)
+    edu_na = Column(Numeric)
+    notstudent = Column(Numeric)
+    student = Column(Numeric)
+    multoth = Column(Numeric)
+    multdepkid = Column(Numeric)
+    pens1pers = Column(Numeric)
+    other1pers = Column(Numeric)
+    pensfamily = Column(Numeric)
+    condepkid = Column(Numeric)
+    conokid = Column(Numeric)
+    codepkid = Column(Numeric)
+    lpndepkid = Column(Numeric)
+    lpdepkid = Column(Numeric)
+    mandepkid = Column(Numeric)
+    madepkid = Column(Numeric)
+    manokid = Column(Numeric)
+    singoth = Column(Numeric)
+    at_mobile = Column(Numeric)
+    at_detach = Column(Numeric)
+    at_comm = Column(Numeric)
+    at_flat = Column(Numeric)
+    at_anyconv = Column(Numeric)
+    at_othconv = Column(Numeric)
+    at_semdet = Column(Numeric)
+    at_terr = Column(Numeric)
+    ten_rentfr = Column(Numeric)
+    ten_ownout = Column(Numeric)
+    ten_ownmort = Column(Numeric)
+    ten_proth = Column(Numeric)
+    ten_prllla = Column(Numeric)
+    ten_so = Column(Numeric)
+    ten_sroth = Column(Numeric)
+    ten_srrent = Column(Numeric)
+    cva_1 = Column(Numeric)
+    cva_2 = Column(Numeric)
+    cva_3pl = Column(Numeric)
+    cva_no = Column(Numeric)
+    pers1hhd = Column(Numeric)
+    pers2hhd = Column(Numeric)
+    pers3hhd = Column(Numeric)
+    pers4hhd = Column(Numeric)
+    pers5hhd = Column(Numeric)
+    pers6plhhd = Column(Numeric)
+    abhrp = Column(Numeric)
+    c1hrp = Column(Numeric)
+    c2hrp = Column(Numeric)
+    dehrp = Column(Numeric)
+    geom = Column(Geometry(geometry_type='MULTIPOLYGON', srid=27700))
+
+
 class RailwayStation(Base):
     """
     A representation of a railway station
@@ -259,7 +446,7 @@ class CensusTripsRoute(Base):
     id = Column(Integer, primary_key=True)
     route_id = Column(Integer)
     seq_id = Column(Integer)
-    station_id = Column(Integer, ForeignKey('geocrud.railway_stations.gid'))
+    station_id = Column(Integer, ForeignKey('censustrips.railway_stations.gid'))
     station = relationship("RailwayStation")
 
 
@@ -273,6 +460,55 @@ def list_stations(session):
     query = session.query(RailwayStation).order_by(RailwayStation.name)
     for stn in query:
         print(stn.name)
+
+
+# TODO: this is just a test to check we are getting stuff back for the 2021 OA data. We will want to handle the difft
+#  census years data in the same function by passing in a year parameter
+def fetch_2021_population_along_route(route_id, pg_conn_str):
+    # set the first element of the dict that will be returned to the Route Name with a placeholder value that later
+    # we will populate
+    d = {'route_name': {'title': None}}
+    engine = create_engine(pg_conn_str)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    # fetch the stops for this route_id
+    stops = session.query(CensusTripsRoute).filter_by(route_id=route_id)
+    stop_id = 1
+
+    first_station_name, last_station_name = None, None
+
+    # for each stop in the route
+    for s in stops:
+        try:
+            # get RailwayStation object that matches the station_name
+            #
+            stn = session.query(RailwayStation).filter_by(name=s.station.name).one()
+
+            # get OutputArea whose polygon geometry contains the RailwayStation object point geometry
+            # weird results happen if do an intersects, looks like it`s using MBR to do the test?
+            oa = session.query(OutputArea21).filter(
+                OutputArea21.geom.ST_Contains(stn.geom)
+            ).one()
+            d[str(stop_id)] = {
+                'station_name': s.station.name, #this works because of the relationship btwn CensusTripsRoute obj and RailwayStation obj
+                'oa_code': oa.oa_code,
+                'oa_totpop': int(oa.totpop)
+            }
+            if stop_id == 1:
+                first_station_name = s.station.name
+            else:
+                last_station_name = s.station.name
+
+            stop_id += 1
+        except sqlalchemy.orm.exc.NoResultFound:
+            print("Warning! {} is not a station, skipped".format(s.station.name))
+
+    # set the name of the route - setting
+    # TODO: it will not always be ScotRail!
+    d['route_name']['title'] = '(2021) ScotRail rail journey from {0} to {1}'.format(first_station_name, last_station_name)
+
+    return d
 
 
 # TODO: based on the names of the first and last station we can create a name for the route
