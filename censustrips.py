@@ -19,7 +19,7 @@ class OutputArea(Base):
     A representation of a census OutputArea
     """
     __tablename__ = 'gb_oa_2011'
-    __table_args__ = {'schema': 'geocrud'}
+    __table_args__ = {'schema': 'censustrips'}
     gid = Column(Integer, primary_key=True)
     oacode = Column(VARCHAR(length=9))
     popx = Column(Numeric)
@@ -229,7 +229,7 @@ class RailwayStation(Base):
     A representation of a railway station
     """
     __tablename__ = 'railway_stations'
-    __table_args__ = {'schema': 'geocrud'}
+    __table_args__ = {'schema': 'censustrips'}
     gid = Column(Integer, primary_key=True)
     code = Column(Integer)
     identifier = Column(VARCHAR)
@@ -242,7 +242,7 @@ class Railway(Base):
     A representation of a railway
     """
     __tablename__ = 'railways_lines'
-    __table_args__ = {'schema': 'geocrud'}
+    __table_args__ = {'schema': 'censustrips'}
     gid = Column(Integer, primary_key=True)
     code = Column(Integer)
     identifier = Column(VARCHAR(length=13))
@@ -255,7 +255,7 @@ class CensusTripsRoute(Base):
     A representation of a railway trip route between stations
     """
     __tablename__ = 'censustrips_route'
-    __table_args__ = {'schema': 'geocrud'}
+    __table_args__ = {'schema': 'censustrips'}
     id = Column(Integer, primary_key=True)
     route_id = Column(Integer)
     seq_id = Column(Integer)
