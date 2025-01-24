@@ -1,3 +1,5 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
 CREATE TABLE censustrips.censustrips_route(
     id serial primary key,
     route_id integer,
