@@ -37,6 +37,10 @@ for mapadh:
 
 {APP}
 
+#TODO: worth a read
+
+http://mapuipatterns.com/
+
 #TODO: revisit OpenLayers
 
 #TODO: look at maplibre / vector tile type stuff
@@ -51,7 +55,14 @@ https://martinfleischmann.net/how-to-create-a-vector-based-web-map-hosted-on-git
 
 {DATA}
 
-#TODO: load in 2021 data (from GeoLytix again)
+#TODO: other types of routes
+
+buses
+
+trams!
+
+https://city-of-edinburgh-council-open-spatial-data-cityofedinburgh.hub.arcgis.com/search?tags=transport
+
 
 #TODO: research / setup map provider(s)
 
