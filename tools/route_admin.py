@@ -24,7 +24,7 @@ def add_route(station_geoids, dry_run):
     db = Postgres(PG_CONNECTION_STRING)
 
     # obtain the value that route_id is currently set to in the table and increment in the new added route
-    current_max_route_id = db.one("SELECT MAX(route_id) FROM geocrud.censustrips_route")
+    current_max_route_id = db.one("SELECT MAX(route_id) FROM censustrips.censustrips_route")
     route_id = current_max_route_id + 1
 
     geoids = station_geoids.split(",")
@@ -34,7 +34,7 @@ def add_route(station_geoids, dry_run):
         records += "({0},{1},{2}),".format(route_id, seq_id, geoid)
         seq_id += 1
 
-    sql_cmd = """INSERT INTO geocrud.censustrips_route(route_id, seq_id, station_id) values {0}""".format(
+    sql_cmd = """INSERT INTO censustrips.censustrips_route(route_id, seq_id, station_id) values {0}""".format(
         records
     )
     sql_cmd = sql_cmd[:-1]
