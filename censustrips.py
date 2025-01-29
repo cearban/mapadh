@@ -437,6 +437,8 @@ class Railway(Base):
     geom = Column(Geometry(geometry_type='MULTILINESTRING', srid=27700))
 
 
+# TODO: add a provider / a provider_id that references a provider table
+#  so we can label the journey as being provided by ScotRail or LNER etc
 class CensusTripsRoute(Base):
     """
     A representation of a railway trip route between stations
