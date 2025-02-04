@@ -53,6 +53,31 @@ https://martinfleischmann.net/how-to-create-a-vector-based-web-map-hosted-on-git
 
 #TODO: load in 2021 data (from GeoLytix again)
 
+
+{MAPS}
+
+follow this: https://chenzhang.org/notes/developer/mapserver-installation/
+
+ignoring the php stuff as I don`t care about mapscript
+
+stick map_config/censustrips.map under the /var/www directory (need to revisit how we config apache correctly!)
+
+then we can make WMS GetMap request like this:
+
+http://localhost/cgi-bin/mapserv?map=/var/www/censustrips.map
+&SERVICE=WMS
+&VERSION=1.1.1
+&REQUEST=GetMap
+&LAYERS=scotland_oa_2011
+&STYLES=
+&SRS=EPSG:27700
+&BBOX=320000,670000,325000,675000
+&WIDTH=400
+&HEIGHT=300
+&FORMAT=image/png
+
+then maybe revisit mapproxy etc!
+
 #TODO: research / setup map provider(s)
 
 # this provides service / api for free OSM mapping!
