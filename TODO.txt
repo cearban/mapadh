@@ -82,3 +82,21 @@ https://versatiles.org/
 #  i.e. we pay $11.50 (opalstack hosting) + $5 donation for osm openfreemap mapping
 #   = $16.50 / mo
 #     = £12.39 / mo (~ same as 11.98/mo for amazon prime ad free) - different form of fun!
+
+
+---
+
+#TODO: Given that the wall I hit before was the front-end UI we should get Claude etc to do this for us...
+#TODO: Go back to Django / GeoDjango
+
+Replace the data with the 2021 UK wide data provided by the GeoDS folks
+
+https://data.geods.ac.uk/dataset/unified-uk-census-data
+
+Could also add the OAC
+
+https://data.geods.ac.uk/dataset/output-area-classification-2021
+
+unified-uk-census-data
+
+
