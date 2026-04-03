@@ -89,7 +89,9 @@ https://versatiles.org/
 #TODO: Given that the wall I hit before was the front-end UI we should get Claude etc to do this for us...
 #TODO: Go back to Django / GeoDjango
 
-Replace the data with the 2021 UK wide data provided by the GeoDS folks
+#TODO: Replace the data with the 2021 UK wide data provided by the GeoDS folks
+# which is OGL
+#  rather than using the GeoLytix data
 
 https://data.geods.ac.uk/dataset/unified-uk-census-data
 
@@ -98,5 +100,47 @@ Could also add the OAC
 https://data.geods.ac.uk/dataset/output-area-classification-2021
 
 unified-uk-census-data
+
+/home/james/geodata/GeographicDS_UK_Census2021
+
+metadata.geods_uk_census2021_variable_metadata
+
+censustrips=> select * from metadata.geods_uk_census2021_variable_metadata limit 1;
+ id | variable_id |     variable_name     | table_id |   table_name   | unit_of_measure
+----+-------------+-----------------------+----------+----------------+-----------------
+  1 | uk001001    | Residence type: Total | uk001    | Residence type | Person
+
+/home/james/geodata/GeographicDS_UK_Census2021/GeoDS/variable_tables_csv/csv/uk001.csv
+
+    OA,uk001001,uk001002,uk001003
+    E00000001,176,176,0
+    E00000003,256,256,0
+    E00000005,112,112,0
+
+
+the GeoDS repo I cloned to here: /home/james/PycharmProjects/unified-uk-census-2021-22
+ does it have loading scripts (for the actual GeoDS data?)
+
+# CONFIG.ini
+
+it should have this content:
+
+[Connections]
+mapadh-db=postgresql+psycopg2://censustrips:<some_password>@host:5432/censustrips
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
