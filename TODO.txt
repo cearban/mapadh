@@ -128,7 +128,7 @@ it should have this content:
 [Connections]
 mapadh-db=postgresql+psycopg2://censustrips:<some_password>@host:5432/censustrips
 
-
+git remote set-url origin git@github.com:cearban/mapadh.git
  
 
 
