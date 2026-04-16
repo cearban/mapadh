@@ -8,7 +8,7 @@ import os
 from flask import Flask
 from flask import render_template
 from flask import jsonify
-from .censustrips import fetch_population_along_route
+from .censustrips import fetch_population_along_route, fetch_buffered_population_along_route
 app = Flask(__name__)
 
 if not os.path.exists('CONFIG.ini'):
@@ -41,6 +41,21 @@ def censustrips_route(route_id):
     return render_template('route.jinja2', route_stops=route_stops_d)
 
 
+@app.route('/censustrips_buffered_route/<int:route_id>')
+def censustrips_buffered_route(route_id):
+    """
+    http://127.0.0.1:5000/censustrips_route/3
+    :param route_id: 1
+    :return: rendered html template
+    """
+    route_stops_d = fetch_buffered_population_along_route(route_id, pg_conn_str=PG_CONNECTION_STRING)
+
+    # flask knows to look in the templates folder
+    # as we have designated our project as a package
+    # by using the __init__.py
+    return render_template('route.jinja2', route_stops=route_stops_d)
+
+
 @app.route('/censustrips_route_json/<int:route_id>')
 def censustrips_route_json(route_id):
     """
@@ -49,4 +64,15 @@ def censustrips_route_json(route_id):
     :return: dict as a json
     """
     route_stops_d = fetch_population_along_route(route_id, pg_conn_str=PG_CONNECTION_STRING)
+    return jsonify(route_stops_d)
+
+
+@app.route('/censustrips_buffered_route_json/<int:route_id>')
+def censustrips_buffered_route_json(route_id):
+    """
+    http://127.0.0.1:5000/censustrips_route_json/3 Edinburgh -> Kings Cross
+    :param route_id: 1
+    :return: dict as a json
+    """
+    route_stops_d = fetch_buffered_population_along_route(route_id, pg_conn_str=PG_CONNECTION_STRING)
     return jsonify(route_stops_d)
