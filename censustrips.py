@@ -90,6 +90,68 @@ def list_stations(session):
 # TODO: as per what was done in "lives on the line" noted in the pdf under docs, search for OAs
 #  within some distance e.g. 200m of each station and average the stat etc
 
+def fetch_buffered_population_along_route(route_id, pg_conn_str, buffer_distance=200):
+    """
+    do what is done in docs/live_on_the_line_article.pdf and draw a 200m buffer around each station point and find
+    within that 200m buffer all overlapping OAs. If only one OA overlaps then use the single value associated with
+    that OA otherwise take an average from all of the overlapping OAs.
+    :param route_id:
+    :param pg_conn_str:
+    :buffer_distance:
+    :return:
+    """
+    d = {'route_name': {'title': None}}
+    engine = create_engine(pg_conn_str)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    # fetch the stops for this route_id
+    stops = session.query(CensusTripsRoute).filter_by(route_id=route_id)
+    stop_id = 1
+
+    first_station_name, last_station_name = None, None
+
+    # for each stop in the route
+    for s in stops:
+        try:
+            stn = session.query(RailwayStation).filter_by(name=s.station.name).one()
+
+            # buffer the station point by the buffer_distance and find all of the overlapping OAs
+            overlapping_output_areas = session.query(OutputArea).filter(
+                OutputArea.geom.ST_Overlaps(stn.geom.ST_Buffer(buffer_distance))
+            )
+
+            # get the count of OAs that overlap with the buffer region
+            count_of_overlapping_oas = overlapping_output_areas.count()
+
+            # calculate the average value of the census variable across this set of overlapping OAs
+            all_persons_total = 0
+            for oa in overlapping_output_areas:
+                all_persons_total += oa.all_persons
+            all_persons_avg = all_persons_total / overlapping_output_areas.count()
+
+            # instead of returning the OA code, return the count of OAs that overlap
+            d[str(stop_id)] = {
+                'station_name': s.station.name, #this works because of the relationship btwn CensusTripsRoute obj and RailwayStation obj
+                'oa_code': 'Number of overlapping Output Areas is {0}'.format(str(count_of_overlapping_oas)),
+                'oa_all_persons': int(all_persons_avg), #sqlalchemy return values as Decimal('92') etc and then jsonify in app.py complains...
+            }
+
+            if stop_id == 1:
+                first_station_name = s.station.name
+            else:
+                last_station_name = s.station.name
+
+            stop_id += 1
+        except sqlalchemy.orm.exc.NoResultFound:
+            print("Warning! {} is not a station, skipped".format(s.station.name))
+
+    # set the name of the route - setting
+    d['route_name']['title'] = 'Population in the 2021 OA taking a rail journey from {0} to {1}'.format(first_station_name, last_station_name)
+
+    return d
+
+
 def fetch_population_along_route(route_id, pg_conn_str):
     # set the first element of the dict that will be returned to the Route Name with a placeholder value that later
     # we will populate
