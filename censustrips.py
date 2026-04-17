@@ -117,12 +117,22 @@ def fetch_buffered_population_along_route(route_id, pg_conn_str, buffer_distance
             stn = session.query(RailwayStation).filter_by(name=s.station.name).one()
 
             # buffer the station point by the buffer_distance and find all of the overlapping OAs
+            # overlapping_output_areas = session.query(OutputArea).filter(
+            #     OutputArea.geom.ST_Overlaps(stn.geom.ST_Buffer(buffer_distance))
+            # )
+
+            # using ST_Overlaps causes a problem for Ardlui as zero overlapping OAs are returned
+            #  and then we get a divide by zero error!
+            #   changing to ST_Intersects prevents this from happening.
+
             overlapping_output_areas = session.query(OutputArea).filter(
-                OutputArea.geom.ST_Overlaps(stn.geom.ST_Buffer(buffer_distance))
+                OutputArea.geom.ST_Intersects(stn.geom.ST_Buffer(buffer_distance))
             )
 
             # get the count of OAs that overlap with the buffer region
             count_of_overlapping_oas = overlapping_output_areas.count()
+
+            print('for station: {0}, count_of_overlapping_oas = {1} '.format(s.station.name, str(count_of_overlapping_oas)))
 
             # calculate the average value of the census variable across this set of overlapping OAs
             all_persons_total = 0
