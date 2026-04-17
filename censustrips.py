@@ -121,7 +121,7 @@ def fetch_buffered_population_along_route(route_id, pg_conn_str, buffer_distance
             #     OutputArea.geom.ST_Overlaps(stn.geom.ST_Buffer(buffer_distance))
             # )
 
-            # using ST_Overlaps causes a problem for Ardlui as zero overlapping OAs are returned
+            # using ST_Overlap causes a problem for Ardlui as zero overlapping OAs are returned
             #  and then we get a divide by zero error!
             #   changing to ST_Intersects prevents this from happening.
 
